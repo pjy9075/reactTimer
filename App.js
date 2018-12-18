@@ -1,7 +1,13 @@
-import * as React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import  React from 'react';
+import {  View, StyleSheet } from 'react-native';
 import { Constants } from 'expo';
-import Timer from './components/Timer'
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
+import Timer from './components/Timer';
+import reducer from "./reducer"
+
+
+let store = createStore(reducer)
 
 // You can import from local files
 //import AssetExample from './components/AssetExample';
@@ -12,9 +18,11 @@ import Timer from './components/Timer'
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
+      <Provider store={store}>
+    
         <Timer/>
-      </View>
+    </Provider>
+
     );
   }
 }
